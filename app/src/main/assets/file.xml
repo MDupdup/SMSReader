@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<?xml-stylesheet type="text/xsl" href="sms.xsl"?>
+
+<smses count="48053" backup_set="c2b1097a-0a58-4659-931d-c8cd6f373268" backup_date="1520764758540">
+    <sms protocol="0" address="0651561429" date="1466439985172" type="2" subject="null" body="T'as juste à me dire son nom c'est pourtant pas compliqué putain" toa="null" sc_toa="null" service_center="null" read="1" status="-1" locked="0" date_sent="0" readable_date="20 juin 2016 18:26:25" contact_name="Guillaume Lailler" />
+    <sms protocol="0" address="+33651561429" date="1466440042536" type="1" subject="null" body="Genre Ça te rapelle rien Mathis et Yan ?" toa="null" sc_toa="null" service_center="null" read="1" status="-1" locked="0" date_sent="0" readable_date="20 juin 2016 18:27:22" contact_name="Guillaume Lailler" />
+    <sms protocol="0" address="0651561429" date="1466440115588" type="2" subject="null" body="Ce serait quand même pas Elsa" toa="null" sc_toa="null" service_center="null" read="1" status="-1" locked="0" date_sent="0" readable_date="20 juin 2016 18:28:35" contact_name="Guillaume Lailler" />
+</smses>
