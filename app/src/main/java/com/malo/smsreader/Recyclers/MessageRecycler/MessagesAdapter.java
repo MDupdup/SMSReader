@@ -16,11 +16,11 @@ import java.util.List;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
 
-    private List<Contact> listContacts = null;
+    private List<Contact> listMessages = null;
 
 
     public MessagesAdapter(List<Contact> listContacts) {
-        this.listContacts = listContacts;
+        this.listMessages = listContacts;
     }
 
     @Override
@@ -31,12 +31,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
 
     @Override
     public void onBindViewHolder(MessagesViewHolder holder, final int position) {
-        holder.getTextViewContactName().setText(listContacts.get(position).getName());
-        holder.getTextViewNumber().setText(listContacts.get(position).getNumber());
+        holder.getTextViewContactName().setText(listMessages.get(position).getName());
+        holder.getTextViewNumber().setText(listMessages.get(position).getNumber());
     }
 
     @Override
     public int getItemCount() {
-        return listContacts.size();
+        return listMessages.size();
     }
 }

@@ -9,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.malo.smsreader.Objects.Contact;
+import com.malo.smsreader.Objects.Message;
 import com.malo.smsreader.RecyclerTools.ClickListener;
 import com.malo.smsreader.RecyclerTools.DividerItemDecorator;
 import com.malo.smsreader.RecyclerTools.RecyclerTouchListener;
 import com.malo.smsreader.Recyclers.ContactsRecycler.ContactsAdapter;
+import com.malo.smsreader.Recyclers.MessageRecycler.MessagesAdapter;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -20,6 +22,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,6 +30,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class MessagesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+
+    List<Message> listMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +60,17 @@ public class MessagesActivity extends AppCompatActivity {
                     String number = nList.item(i).getAttributes().getNamedItem("address").getNodeValue();
                     if(number.contains("+33")) {number = number.replace("+33","0");}
 
+                    int type = Integer.parseInt(nList.item(i).getAttributes().getNamedItem("type").getNodeValue());
+                    String body = nList.item(i).getAttributes().getNamedItem("body").getNodeValue();
+                    long date = Long.parseLong(nList.item(i).getAttributes().getNamedItem("date").getNodeValue());
+                    String readableDate = nList.item(i).getAttributes().getNamedItem("readable_date").getNodeValue();
+                    String subject = nList.item(i).getAttributes().getNamedItem("subject").getNodeValue();
+                    if(subject.equals("null")) {subject = "";}
+
+
                     if(!listNums.contains(number)) {
                         listNums.add(number);
-                        listContacts.add(new Contact(number,name));
+                        listMessages.add(new Message(new Contact(number,name),type,body,date,readableDate,subject));
                     }
 
                     //listContacts.add(new Contact(number,name));
@@ -85,18 +98,7 @@ public class MessagesActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ContactsAdapter contactsAdapter = new ContactsAdapter(listContacts);
-        recyclerView.setAdapter(contactsAdapter);
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Intent intent = new Intent(ContactsActivity.this, MessagesActivity.class);
-                intent.putExtra("phone_number",listContacts.get(position).getNumber());
-                intent.putExtra("filename",getIntent().getStringExtra("filename"));
-
-                startActivity(intent);
-            }
-        }));
+        //MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages);
+        //recyclerView.setAdapter(messagesAdapter);
     }
 }
