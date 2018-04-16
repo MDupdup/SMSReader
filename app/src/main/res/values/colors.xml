@@ -11,4 +11,6 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorYellowBanana">#D1B606</color>
+    <color name="colorBrokenWhite">#FEFEE2</color>
 </resources>

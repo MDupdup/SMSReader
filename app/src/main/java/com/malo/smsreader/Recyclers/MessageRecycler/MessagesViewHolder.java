@@ -12,23 +12,16 @@ import com.malo.smsreader.R;
 
 public class MessagesViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView textViewContactName = null;
-    private TextView textViewContactNumber = null;
+    private TextView textViewMessageBody = null;
 
     public MessagesViewHolder(View itemView) {
         super(itemView);
 
-        textViewContactName = itemView.findViewById(R.id.contact_name);
-        textViewContactNumber = itemView.findViewById(R.id.contact_number);
+        textViewMessageBody = itemView.findViewById(R.id.message_body);
 
     }
 
-    public TextView getTextViewContactName() {
-        return textViewContactName;
+    public TextView getTextViewMessageBody() {
+        return textViewMessageBody;
     }
-
-    public TextView getTextViewNumber() {
-        return textViewContactNumber;
-    }
-
 }

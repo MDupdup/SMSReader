@@ -38,6 +38,8 @@ public class MessagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
+        listMessages = new ArrayList<>();
+
         try {
             InputStream smsList = getAssets().open(getIntent().getStringExtra("filename"));
 
@@ -92,13 +94,13 @@ public class MessagesActivity extends AppCompatActivity {
 
         } catch (Exception e) {e.printStackTrace();}
 
-        recyclerView = findViewById(R.id.list_contacts);
+        recyclerView = findViewById(R.id.list_messages);
         recyclerView.setHasFixedSize(true);
         RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecorator(ContextCompat.getDrawable(this, R.drawable.divider));
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages);
-        //recyclerView.setAdapter(messagesAdapter);
+        MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages,this);
+        recyclerView.setAdapter(messagesAdapter);
     }
 }
