@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingEnd="20dp">
+    android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/message_date"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="Bonjour"/>
+    
     <TextView
         android:id="@+id/message_body"
         android:layout_width="240dp"
@@ -16,7 +24,11 @@
         android:text="Issou"
         android:textSize="20dp"
         android:textColor="@color/colorBlack"
-        android:padding="8dp"
-        android:background="@drawable/message_container_type1"
-        android:layout_marginStart="10dp"/>
-</LinearLayout>
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/message_container_type2"
+        android:layout_marginStart="150px"
+        android:layout_toEndOf="@+id/message_date"/>
+
+</RelativeLayout>

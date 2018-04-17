@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactsActivity" />
-        <activity android:name=".MessagesActivity"></activity>
+        <activity
+            android:name=".ContactsActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".MessagesActivity"
+            android:parentActivityName=".ContactsActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -2,12 +2,12 @@ package com.malo.smsreader.Recyclers.MessageRecycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.malo.smsreader.Objects.Contact;
 import com.malo.smsreader.Objects.Message;
 import com.malo.smsreader.R;
 
@@ -38,10 +38,10 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
     public void onBindViewHolder(MessagesViewHolder holder, final int position) {
         if(listMessages.get(position).getType() == 2) {
             holder.getTextViewMessageBody().setBackground(context.getResources().getDrawable(R.drawable.message_container_type2));
-            ((LinearLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart(150);
+            ((RelativeLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,150,context.getResources().getDisplayMetrics()));
         } else {
             holder.getTextViewMessageBody().setBackground(context.getResources().getDrawable(R.drawable.message_container_type1));
-            ((LinearLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart(10);
+            ((RelativeLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart(10);
         }
 
         holder.getTextViewMessageBody().setText(listMessages.get(position).getBody());

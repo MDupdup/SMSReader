@@ -99,6 +99,7 @@ public class ContactsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Intent intent = new Intent(ContactsActivity.this, MessagesActivity.class);
+                intent.putExtra("contact_name", listContacts.get(position).getName());
                 intent.putExtra("phone_number",listContacts.get(position).getNumber());
                 intent.putExtra("filename",getIntent().getStringExtra("filename"));
 

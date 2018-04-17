@@ -41,6 +41,8 @@ public class MessagesActivity extends AppCompatActivity {
 
         listMessages = new ArrayList<>();
 
+        setTitle(getIntent().getStringExtra("contact_name"));
+
         try {
             InputStream smsList = getAssets().open(getIntent().getStringExtra("filename"));
 
@@ -102,7 +104,9 @@ public class MessagesActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.list_messages);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
 
         MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages,this);
         recyclerView.setAdapter(messagesAdapter);
