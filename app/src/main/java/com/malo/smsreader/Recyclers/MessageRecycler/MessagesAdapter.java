@@ -39,6 +39,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
         if(listMessages.get(position).getType() == 2) {
             holder.getTextViewMessageBody().setBackground(context.getResources().getDrawable(R.drawable.message_container_type2));
             ((LinearLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart(150);
+        } else {
+            holder.getTextViewMessageBody().setBackground(context.getResources().getDrawable(R.drawable.message_container_type1));
+            ((LinearLayout.LayoutParams) holder.getTextViewMessageBody().getLayoutParams()).setMarginStart(10);
         }
 
         holder.getTextViewMessageBody().setText(listMessages.get(position).getBody());

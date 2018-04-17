@@ -13,6 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:ellipsize="end"
+        android:text="Issou"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"
+        android:padding="8dp"
         android:background="@drawable/message_container_type1"
-        android:layout_marginStart="150dp"/>
+        android:layout_marginStart="10dp"/>
 </LinearLayout>

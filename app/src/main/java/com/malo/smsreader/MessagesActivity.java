@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.malo.smsreader.Objects.Contact;
@@ -53,6 +54,8 @@ public class MessagesActivity extends AppCompatActivity {
 
             ArrayList<String> listNums = new ArrayList<String>();
 
+            Log.i("LOL", Integer.toString(nList.getLength()));
+
             for (int i=1; i<nList.getLength(); i+=2) {
 
                 Node node = nList.item(i);
@@ -62,6 +65,8 @@ public class MessagesActivity extends AppCompatActivity {
                     String number = nList.item(i).getAttributes().getNamedItem("address").getNodeValue();
                     if(number.contains("+33")) {number = number.replace("+33","0");}
 
+                    if(!number.equals(getIntent().getStringExtra("phone_number"))) {continue;}
+
                     int type = Integer.parseInt(nList.item(i).getAttributes().getNamedItem("type").getNodeValue());
                     String body = nList.item(i).getAttributes().getNamedItem("body").getNodeValue();
                     long date = Long.parseLong(nList.item(i).getAttributes().getNamedItem("date").getNodeValue());
@@ -69,11 +74,12 @@ public class MessagesActivity extends AppCompatActivity {
                     String subject = nList.item(i).getAttributes().getNamedItem("subject").getNodeValue();
                     if(subject.equals("null")) {subject = "";}
 
+                    listMessages.add(new Message(new Contact(number,name),type,body,date,readableDate,subject));
 
-                    if(!listNums.contains(number)) {
-                        listNums.add(number);
-                        listMessages.add(new Message(new Contact(number,name),type,body,date,readableDate,subject));
-                    }
+//                    if(!listNums.contains(number)) {
+//                        listNums.add(number);
+//
+//                    }
 
                     //listContacts.add(new Contact(number,name));
 /*                    Log.i("DEHORS",number);
@@ -96,8 +102,6 @@ public class MessagesActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.list_messages);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecorator(ContextCompat.getDrawable(this, R.drawable.divider));
-        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages,this);
