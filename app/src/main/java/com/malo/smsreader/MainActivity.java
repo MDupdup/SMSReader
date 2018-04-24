@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             int messageCount = 0;
 
             try {
-                InputStream smsList = getAssets().open(path[0]);
+                InputStream smsList = getAssets().open(path[i]);
 
                 String[] hiddenFiles = new String[] {"images","webkit"};
                 if (Arrays.asList(hiddenFiles).contains(path[i])) {continue;}

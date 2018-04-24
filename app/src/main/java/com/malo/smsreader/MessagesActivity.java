@@ -1,20 +1,15 @@
 package com.malo.smsreader;
 
-import android.content.Intent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import com.malo.smsreader.Objects.Contact;
 import com.malo.smsreader.Objects.Message;
-import com.malo.smsreader.RecyclerTools.ClickListener;
-import com.malo.smsreader.RecyclerTools.DividerItemDecorator;
-import com.malo.smsreader.RecyclerTools.RecyclerTouchListener;
-import com.malo.smsreader.Recyclers.ContactsRecycler.ContactsAdapter;
 import com.malo.smsreader.Recyclers.MessageRecycler.MessagesAdapter;
 
 import org.w3c.dom.Document;
@@ -52,8 +47,6 @@ public class MessagesActivity extends AppCompatActivity {
 
             NodeList nList = doc.getElementsByTagName("smses").item(0).getChildNodes();
 
-            //Log.i("Maislol", Integer.toString(doc.getElementsByTagName("smses").item(0).getChildNodes().getLength()));
-
             ArrayList<String> listNums = new ArrayList<String>();
 
             Log.i("LOL", Integer.toString(nList.getLength()));
@@ -77,26 +70,6 @@ public class MessagesActivity extends AppCompatActivity {
                     if(subject.equals("null")) {subject = "";}
 
                     listMessages.add(new Message(new Contact(number,name),type,body,date,readableDate,subject));
-
-//                    if(!listNums.contains(number)) {
-//                        listNums.add(number);
-//
-//                    }
-
-                    //listContacts.add(new Contact(number,name));
-/*                    Log.i("DEHORS",number);
-                    if(listContacts.size() > 0) {
-                        Log.i("LOL",listContacts.get(0).getNumber());
-                        for(int j = 0; j < listContacts.size(); j++) {
-                            Log.i("LOL0",listContacts.get(j).getNumber());
-                            if(!listContacts.get(j).getNumber().equals(number)) {
-                                Log.i("LOL2",listContacts.get(j).getNumber());
-
-                            }
-                        }
-                    }*/
-
-                    //tv1.setText(tv1.getText() + nList.item(i).getAttributes().getNamedItem("body").getNodeValue() + "\n");
                 }
             }
 
@@ -110,5 +83,19 @@ public class MessagesActivity extends AppCompatActivity {
 
         MessagesAdapter messagesAdapter = new MessagesAdapter(listMessages,this);
         recyclerView.setAdapter(messagesAdapter);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+      return super.onOptionsItemSelected(item);
     }
 }

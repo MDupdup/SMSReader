@@ -49,8 +49,6 @@ public class ContactsActivity extends AppCompatActivity {
 
             NodeList nList = doc.getElementsByTagName("smses").item(0).getChildNodes();
 
-            //Log.i("Maislol", Integer.toString(doc.getElementsByTagName("smses").item(0).getChildNodes().getLength()));
-
             ArrayList<String> listNums = new ArrayList<String>();
 
             for (int i=1; i<nList.getLength(); i+=2) {
@@ -66,21 +64,6 @@ public class ContactsActivity extends AppCompatActivity {
                         listNums.add(number);
                         listContacts.add(new Contact(number,name));
                     }
-
-                    //listContacts.add(new Contact(number,name));
-/*                    Log.i("DEHORS",number);
-                    if(listContacts.size() > 0) {
-                        Log.i("LOL",listContacts.get(0).getNumber());
-                        for(int j = 0; j < listContacts.size(); j++) {
-                            Log.i("LOL0",listContacts.get(j).getNumber());
-                            if(!listContacts.get(j).getNumber().equals(number)) {
-                                Log.i("LOL2",listContacts.get(j).getNumber());
-
-                            }
-                        }
-                    }*/
-
-                    //tv1.setText(tv1.getText() + nList.item(i).getAttributes().getNamedItem("body").getNodeValue() + "\n");
                 }
             }
 

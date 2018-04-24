@@ -46,4 +46,8 @@ public class Message {
     public String getObject() {
         return object;
     }
+
+    public String getDayMonthOfDate() {
+        return readableDate.split("\\s+")[0] + " " + readableDate.split("\\s+")[1];
+    }
 }

@@ -1,15 +1,16 @@
 package com.malo.smsreader.Recyclers.MessageRecycler;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-
 import com.malo.smsreader.Objects.Message;
 import com.malo.smsreader.R;
+import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by Malo on 14/03/2018.
  */
 
-public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
+public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> implements FastScrollRecyclerView.SectionedAdapter {
 
     private List<Message> listMessages = null;
     private Context context;
@@ -50,5 +51,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
     @Override
     public int getItemCount() {
         return listMessages.size();
+    }
+
+    @NonNull
+    @Override
+    public String getSectionName(int position) {
+        return listMessages.get(position).getDayMonthOfDate();
     }
 }

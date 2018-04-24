@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.malo.smsreader.Objects.File;
 import com.malo.smsreader.R;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,7 +33,9 @@ public class XmlFilesAdapter extends RecyclerView.Adapter<XmlFilesViewHolder> {
     @Override
     public void onBindViewHolder(XmlFilesViewHolder holder, final int position) {
         holder.getTextViewFileName().setText(listFiles.get(position).getName());
-        holder.getTextViewFileDate().setText(String.valueOf(listFiles.get(position).getDate()));
+
+        Date fileDate = new Date(listFiles.get(position).getDate());
+        holder.getTextViewFileDate().setText(fileDate.toString());
         holder.getTextViewFileMessageCount().setText(String.valueOf(listFiles.get(position).getMessageCount()));
     }
 
